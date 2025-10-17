@@ -12,11 +12,15 @@ def size_tree(node):
         return 1 + size_tree(node['left']) + size_tree(node['right'])
 
 def put(my_bst, key, value):
-    return insert_node(my_bst["root"], key, value)
+    if my_bst["root"] != None:
+        return insert_node(my_bst["root"], key, value)
+    else:
+        my_bst["root"] = n.new_node(key, value)
+        return my_bst
 
 def insert_node(root, key, value):
     if root is None:
-        root["root"] = n.new_node(key, value)
+        root = n.new_node(key, value)
     elif key == root['key']:
         root['value'] = value
         return root
@@ -40,6 +44,7 @@ def get_node(root, key):
             return get_node(root["left"])
         if key > root["key"]:
             return get_node(root["right"])
+        
 def contains(my_bst, key):
     if get(my_bst, key) is not None:
         return True
