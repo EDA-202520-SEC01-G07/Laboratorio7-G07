@@ -28,7 +28,7 @@ Los estudiantes editan esta sección para agregar sus nombres, correos electrón
 
 1. Juliana Rodríguez Morales, js.rodriguezm1234@uniandes.edu.co, 202421552
 2. Juan Andrés Lozada Barragán, j.lozadab@uniandes.edu.co, 202510410
-3. wMaria Clara Quijano, m.quijanoa@uniandes.edu.co, 202420069
+3. Maria Clara Quijano, m.quijanoa@uniandes.edu.co, 202420069
 
 [Volver al inicio](#laboratorio-7)
 
