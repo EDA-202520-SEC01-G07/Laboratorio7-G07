@@ -30,20 +30,18 @@ def insert_node(root, key, value):
         return insert_node(root['right'], key, value)
 
 def get(bst, key):
-    valor = None
-    get_node(bst["root"], key)
-    return valor
+    return get_node(bst["root"], key)
 
 def get_node(root, key):
-    if root["key"] == None:
+    if root == None:
         return None
     elif root["key"] == key:
         return root["value"]
     else:
         if key < root["key"]:
-            return get_node(root["left"])
+            return get_node(root["left"], key)
         if key > root["key"]:
-            return get_node(root["right"])
+            return get_node(root["right"], key)
         
 def contains(my_bst, key):
     if get(my_bst, key) is not None:
