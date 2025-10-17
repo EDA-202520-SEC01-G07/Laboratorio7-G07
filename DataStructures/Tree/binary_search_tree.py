@@ -1,9 +1,11 @@
 def new_map():
     return {"root": None}
-def size(node):
-    if node is None:
-        return 0
-    return 1 + size(node['left']) + size(node['right'])
+def size(my_bst):
+    def size_tree(node):
+        if node is None:
+            return 0
+        else:
+            return 1 + size_tree(node['left']) + size_tree(node['right'])
 def insert_node(root, key, value):
     if root is None:
         return {'key': key, 'value':value, 'left': None, 'right': None}
