@@ -5,7 +5,8 @@ def size(m):
         if node is None:
             return 0
         return 1 + size_helper(node["left"]) + size_helper(node["right"])
-    return size_helper(m["root"])def insert_node(root, key, value):
+    return size_helper(m["root"])
+def insert_node(root, key, value):
     if root is None:
         return {'key': key, 'value':value, 'left': None, 'right': None}
     else:
