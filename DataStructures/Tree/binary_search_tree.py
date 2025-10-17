@@ -38,3 +38,8 @@ def get_node(root, key):
             return get_node(root["left"])
         if key > root["key"]:
             return get_node(root["right"])
+def contains(my_bst, key):
+    if get(my_bst, key) is not None:
+        return True
+    else:
+        return False
