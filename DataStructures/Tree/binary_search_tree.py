@@ -21,3 +21,20 @@ def insert_node(root, key, value):
 def put(my_bst, key, value):
     my_bst = insert_node(my_bst, key, value)
     return my_bst
+
+
+def get(bst, key):
+    valor = None
+    get_node(bst["root"], key)
+    return valor
+
+def get_node(root, key):
+    if root["key"] == None:
+        return None
+    elif root["key"] == key:
+        return root["value"]
+    else:
+        if key < root["key"]:
+            return get_node(root["left"])
+        if key > root["key"]:
+            return get_node(root["right"])
