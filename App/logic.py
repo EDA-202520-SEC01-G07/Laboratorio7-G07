@@ -167,15 +167,14 @@ def index_height(analyzer):
     Altura del arbol
     """
     # TODO Completar la función de consulta de altura del árbol
-    pass
-
+    return bst.height(analyzer["dateIndex"])
 
 def index_size(analyzer):
     """
     Numero de elementos en el indice
     """
     # TODO Completar la función de consulta de tamaño del árbol
-    pass
+    return bst.size(analyzer["dateIndex"])
 
 
 def min_key(analyzer):
@@ -183,7 +182,7 @@ def min_key(analyzer):
     Llave mas pequena
     """
     # TODO Completar la función de consulta de la llave mínima
-    pass
+    return bst.get_min(analyzer["dateIndex"])
 
 
 def max_key(analyzer):
@@ -191,7 +190,7 @@ def max_key(analyzer):
     Llave mas grande
     """
     # TODO Completar la función de consulta de la llave máxima
-    pass
+    return bst.get_max(analyzer["dateIndex"])
 
 
 def get_crimes_by_range(analyzer, initialDate, finalDate):
@@ -199,7 +198,11 @@ def get_crimes_by_range(analyzer, initialDate, finalDate):
     Retorna el numero de crimenes en un rago de fechas.
     """
     # TODO Completar la función de consulta de crimenes por rango de fechas
-    pass
+    llaves = bst.keys(analyzer["dateIndex"], initialDate, finalDate) #retorna un single_linked
+    contador = 0
+    for i in range(al.size(llaves)):
+        contador += 1
+    return contador
 
 
 def get_crimes_by_range_code(analyzer, initialDate, offensecode):
@@ -208,4 +211,11 @@ def get_crimes_by_range_code(analyzer, initialDate, offensecode):
     de un tipo especifico.
     """
     # TODO Completar la función de consulta de crimenes por tipo de crimen en una fecha
-    pass
+    arbol = analyzer["dateIndex"]
+    tabla_hash = bst.get(arbol, initialDate)
+    lista = lp.get(tabla_hash, offensecode)
+    contador = 0
+    for i in range(al.size(lista)):
+        contador += 1
+    return contador
+    

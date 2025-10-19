@@ -85,6 +85,24 @@ def value_set_tree(root, value_list):
         key_set_tree(root["right"], value_list)
         return value_list
     
+def get_min(bst):
+    return None
+    
+def get_max(bst):
+    return None
+
+def delete_min(bst):
+    return None
+
+def delete_max(bst):
+    return None
+    
+def keys(bst, key_initial, key_final):
+    return None
+
+def values(bst, key_initial, key_final):
+    return None
+    
 def height(bst):
     return height_tree(bst["root"], 0)
 
