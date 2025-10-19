@@ -199,10 +199,7 @@ def get_crimes_by_range(analyzer, initialDate, finalDate):
     """
     # TODO Completar la función de consulta de crimenes por rango de fechas
     llaves = bst.keys(analyzer["dateIndex"], initialDate, finalDate) #retorna un single_linked
-    contador = 0
-    for i in range(al.size(llaves)):
-        contador += 1
-    return contador
+    return al.size(llaves)
 
 
 def get_crimes_by_range_code(analyzer, initialDate, offensecode):
@@ -212,10 +209,7 @@ def get_crimes_by_range_code(analyzer, initialDate, offensecode):
     """
     # TODO Completar la función de consulta de crimenes por tipo de crimen en una fecha
     arbol = analyzer["dateIndex"]
-    tabla_hash = bst.get(arbol, initialDate)
+    dateEntry = bst.get(arbol, initialDate)
+    tabla_hash = dateEntry["offenseIndex"]
     lista = lp.get(tabla_hash, offensecode)
-    contador = 0
-    for i in range(al.size(lista)):
-        contador += 1
-    return contador
-    
+    return al.size(lista["lstoffenses"])
