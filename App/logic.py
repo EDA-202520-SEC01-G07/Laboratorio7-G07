@@ -198,7 +198,9 @@ def get_crimes_by_range(analyzer, initialDate, finalDate):
     Retorna el numero de crimenes en un rago de fechas.
     """
     # TODO Completar la función de consulta de crimenes por rango de fechas
-    llaves = bst.keys(analyzer["dateIndex"], initialDate, finalDate) #retorna un single_linked
+    i = datetime.datetime.strptime(initialDate, '%Y-%m-%d').date()
+    f = datetime.datetime.strptime(finalDate, '%Y-%m-%d').date()
+    llaves = bst.keys(analyzer["dateIndex"], i, f) #retorna un single_linked
     return al.size(llaves)
 
 
@@ -208,8 +210,13 @@ def get_crimes_by_range_code(analyzer, initialDate, offensecode):
     de un tipo especifico.
     """
     # TODO Completar la función de consulta de crimenes por tipo de crimen en una fecha
+    i =  datetime.datetime.strptime(initialDate, '%Y-%m-%d').date()
     arbol = analyzer["dateIndex"]
-    dateEntry = bst.get(arbol, initialDate)
+    dateEntry = bst.get(arbol, i)
+    if dateEntry is None:
+        return 0
     tabla_hash = dateEntry["offenseIndex"]
     lista = lp.get(tabla_hash, offensecode)
+    if lista is None:
+        return 0
     return al.size(lista["lstoffenses"])
