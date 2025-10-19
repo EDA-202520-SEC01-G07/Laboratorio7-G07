@@ -1,4 +1,5 @@
 from DataStructures.Tree import bst_node as n
+from DataStructures.List import single_linked_list as lt
 def new_map():
     return {"root": None}
 
@@ -44,8 +45,52 @@ def get_node(root, key):
         if key > root["key"]:
             return get_node(root["right"], key)
         
+
 def contains(my_bst, key):
     if get(my_bst, key) is not None:
         return True
     else:
         return False
+
+def is_empty(bst):
+    if bst["root"] is None:
+        return True
+    return False
+
+def key_set(bst):
+    lista = lt.new_list()
+    key_set_tree(bst["root"], lista)
+    return lista
+    
+def key_set_tree(root, key_list):
+    if root is None:
+        return key_list
+    else:
+        lt.add_last(key_list, root["key"])
+        key_set_tree(root["left"], key_list)
+        key_set_tree(root["right"], key_list)
+        return key_list
+    
+def value_set(bst):
+    lista = lt.new_list()
+    value_set_tree(bst["root"], lista)
+    return lista
+    
+def value_set_tree(root, value_list):
+    if root is None:
+        return value_list
+    else:
+        lt.add_last(value_list, root["value"])
+        key_set_tree(root["left"], value_list)
+        key_set_tree(root["right"], value_list)
+        return value_list
+    
+def height(bst):
+    return height_tree(bst["root"], 0)
+
+def height_tree(root, contador):
+    if root is None:
+        return contador
+    else:
+        contador += 1
+        return max(height_tree(root["left"], contador), height_tree(root["right"], contador))
