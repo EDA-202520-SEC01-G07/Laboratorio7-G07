@@ -54,8 +54,7 @@ def new_logic():
 
     analyzer['crimes'] = al.new_list()
     # TODO completar la creación del mapa ordenado
-    analyzer['dateIndex'] = None
-    analyzer['dateEntry'] = None
+    analyzer['dateIndex'] = bst.new_map()
     return analyzer
 
 # Funciones para realizar la carga
@@ -118,7 +117,7 @@ def add_date_index(datentry, crime):
     if (offentry is None):
         # TODO Realice el caso en el que no se encuentre el tipo de crimen
         o = new_offense_entry(crime["OFFENSE_CODE_GROUP"], crime)
-        al.add_last(o[["lstoffenses"]], crime)
+        al.add_last(o["lstoffenses"], crime)
         lp.put(offenseIndex, crime["OFFENSE_CODE_GROUP"], o) 
     else:
         # TODO Realice el caso en el que se encuentre el tipo de crimen
