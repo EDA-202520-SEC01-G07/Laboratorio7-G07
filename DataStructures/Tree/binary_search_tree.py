@@ -86,23 +86,61 @@ def value_set_tree(root, value_list):
         return value_list
     
 def get_min(bst):
-    return None
+    return get_min_tree(bst["root"])
+
+def get_min_tree(root):
+    if root is None:
+        return None
+    elif root["left"] is None:
+        return root["key"]
+    else:
+        return get_min_tree(root["left"])
     
 def get_max(bst):
-    return None
+    return get_max_tree(bst["root"])
+
+def get_max_tree(root):
+    if root is None:
+        return None
+    elif root["right"] is None:
+        return root["key"]
+    else:
+        return get_max_tree(root["right"])
 
 def delete_min(bst):
     return None
 
+def delete_min_tree(root):
+    return None
+
 def delete_max(bst):
     return None
-    
-def keys(bst, key_initial, key_final):
+
+def delete_max_tree(root):
     return None
+
+def keys(bst, key_initial, key_final):
+    list_keys = lt.new_list()
+    return keys_range(bst["root"], key_initial, key_final, list_keys)
+
+def keys_range(root, key_initial, key_final, list_keys):
+    if root is None:
+        return list_keys
+    else:
+        if key_initial <= root["key"] <= key_final:
+            lt.add_last(list_keys, root["key"])
+        if key_initial < root["key"]:
+            keys_range(root["left"], key_initial, key_final, list_keys)
+        if root["key"] < key_final:
+            keys_range(root["right"], key_initial, key_final, list_keys)
+        return list_keys
 
 def values(bst, key_initial, key_final):
     return None
-    
+
+def values_range(root, key_initial, key_final, list_values):
+    return None
+
 def height(bst):
     return height_tree(bst["root"], 0)
 
