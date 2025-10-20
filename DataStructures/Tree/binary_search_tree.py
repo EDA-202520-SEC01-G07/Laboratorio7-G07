@@ -107,16 +107,16 @@ def get_max_tree(root):
     else:
         return get_max_tree(root["right"])
 
-def delete_min(bst):
+def delete_min(bst):  ## FALTA  a
     return None
 
-def delete_min_tree(root):
+def delete_min_tree(root):  ## FALTA  a
     return None
 
-def delete_max(bst):
+def delete_max(bst): ## FALTA   b
     return None
 
-def delete_max_tree(root):
+def delete_max_tree(root):  ## FALTA   b
     return None
 
 def keys(bst, key_initial, key_final):
@@ -135,10 +135,11 @@ def keys_range(root, key_initial, key_final, list_keys):
             keys_range(root["right"], key_initial, key_final, list_keys)
         return list_keys
 
-def values(bst, key_initial, key_final):
-    return None
+def values(bst, key_initial, key_final):  ## Está ligado al values range
+    list_values = lt.new_list()
+    return values_range(bst["root"], key_initial, key_final, list_values)
 
-def values_range(root, key_initial, key_final, list_values):
+def values_range(root, key_initial, key_final, list_values): ## FALTA  c
     return None
 
 def height(bst):
