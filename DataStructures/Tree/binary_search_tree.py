@@ -97,8 +97,7 @@ def get_min_tree(root):
         return get_min_tree(root["left"])
     
 def get_max(bst):
-    bst["root"]=get_max_tree(bst["root"])
-    return bst["root"]
+    return get_max_tree(bst["root"])
 
 def get_max_tree(root):
     if root is None:
