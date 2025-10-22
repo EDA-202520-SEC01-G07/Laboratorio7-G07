@@ -97,7 +97,8 @@ def get_min_tree(root):
         return get_min_tree(root["left"])
     
 def get_max(bst):
-    return get_max_tree(bst["root"])
+    bst["root"]=get_max_tree(bst["root"])
+    return bst["root"]
 
 def get_max_tree(root):
     if root is None:
@@ -107,17 +108,31 @@ def get_max_tree(root):
     else:
         return get_max_tree(root["right"])
 
-def delete_min(bst):  ## FALTA  a
-    return None
+def delete_min(bst): 
+    bst["root"] = delete_min_tree(bst["root"])
+    return bst["root"]
 
-def delete_min_tree(root):  ## FALTA  a
-    return None
+def delete_min_tree(root): 
+    if root is None:
+        return None
+    elif root["left"] is None:
+        return root["right"]
+    else:
+        root["left"] = delete_min_tree(root["left"])
+        return root
 
-def delete_max(bst): ## FALTA   b
-    return None
+def delete_max(bst): 
+    return delete_max_tree(bst["root"])
 
-def delete_max_tree(root):  ## FALTA   b
-    return None
+def delete_max_tree(root):
+    if root is None:
+        return None
+    elif root["right"] is None:
+        return root["left"]
+    else:
+        root["right"] = delete_max_tree(root["right"])
+        return root
+    
 
 def keys(bst, key_initial, key_final):
     list_keys = lt.new_list()
