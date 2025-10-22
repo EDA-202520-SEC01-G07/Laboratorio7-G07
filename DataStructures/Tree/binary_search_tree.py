@@ -149,12 +149,21 @@ def keys_range(root, key_initial, key_final, list_keys):
             keys_range(root["right"], key_initial, key_final, list_keys)
         return list_keys
 
-def values(bst, key_initial, key_final):  ## Está ligado al values range
+def values(bst, key_initial, key_final):
     list_values = lt.new_list()
     return values_range(bst["root"], key_initial, key_final, list_values)
 
-def values_range(root, key_initial, key_final, list_values): ## FALTA  c
-    return None
+def values_range(root, key_initial, key_final, list_values):
+        if root is None:
+            return list_values
+        else:
+            if key_initial <= root["key"] <= key_final:
+                lt.add_last(list_values, root["key"])
+            if key_initial < root["key"]:
+                keys_range(root["left"], key_initial, key_final, list_values)
+            if root["key"] < key_final:
+                keys_range(root["right"], key_initial, key_final, list_values)
+            return list_values
 
 def height(bst):
     return height_tree(bst["root"], 0)
