@@ -12,7 +12,6 @@ def is_available(table, pos):
    return False
 
 def default_compare(key, entry):
-
    if key == me.get_key(entry):
       return 0
    elif key > me.get_key(entry):
@@ -50,11 +49,16 @@ def rehash(my_map):
    """
    cap_nueva = mf.next_prime(2*my_map["capacity"])
    cap_ant = my_map["capacity"]
-   my_map["capacity"] = cap_nueva
+   nuevo = new_map(int(0.5*cap_nueva),0.5)
    
+   
+   """
+   my_map["capacity"] = cap_nueva
+
    new_table = lt.new_list()
    for i in range(cap_nueva):
         lt.add_last(new_table, me.new_map_entry(None,None))
+   
    
    for i in range(cap_ant):
       entry = lt.get_element(my_map["table"], i)
@@ -62,16 +66,22 @@ def rehash(my_map):
          llave = me.get_key(entry)
          valor = me.get_value(entry)
          h = mf.hash_value(my_map, llave) % my_map["capacity"] #Encuentra el nuevo valor hash
-         
          ocupied, pos = find_slot(my_map, llave, h)
          if ocupied: #Si existe la llave, se cambia el valor
             me.set_value(lt.get_element(new_table, pos), valor)
          else: #No existe y se debe agregar la llave-valor  
             me.set_key(lt.get_element(new_table, pos), llave)
             me.set_value(lt.get_element(new_table, pos), valor)
-            
-   my_map["current_factor"] = my_map["size"]/my_map["capacity"]
-   return my_map
+   """
+   
+   for i in range(cap_ant):
+      entry = lt.get_element(my_map["table"], i)
+      if me.get_key(entry) is not None:
+         llave = me.get_key(entry)
+         valor = me.get_value(entry)
+         put(nuevo, llave, valor)
+   
+   return nuevo
 
 def new_map(num_elements, load_factor, prime=109345121):
     y=mf.next_prime(num_elements//load_factor)

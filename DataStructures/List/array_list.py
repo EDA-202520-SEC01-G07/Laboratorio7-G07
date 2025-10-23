@@ -6,8 +6,8 @@ def new_list():
     return newlist
 
 def get_element(my_list, index):
-    my_list["size"]=len(my_list["elements"])
     if index <0 or index >= my_list["size"]:
+        print(index, size(my_list))
         raise Exception('IndexError: list index out of range')
     else:
         return my_list["elements"][index]
@@ -35,7 +35,7 @@ def add_last(array_list,element):
     return array_list
 
 def size(array_list):
-    return len(array_list["elements"])   
+    return array_list["size"] 
 
 def first_element(array_list):
     if array_list["size"]>0:
