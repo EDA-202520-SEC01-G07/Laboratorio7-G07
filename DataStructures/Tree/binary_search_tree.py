@@ -1,5 +1,5 @@
 from DataStructures.Tree import bst_node as n
-from DataStructures.List import single_linked_list as lt
+from DataStructures.List import array_list as lt
 def new_map():
     return {"root": None}
 
@@ -153,20 +153,20 @@ def values(bst, key_initial, key_final):
     list_values = lt.new_list()
     return values_range(bst["root"], key_initial, key_final, list_values)
 
-def values_range(root, key_initial, key_final, list_values):
+def values_range(root, key_initial, key_final, list_value):
         if root is None:
-            return list_values
+            return list_value
         else:
             if key_initial <= root["key"] <= key_final:
-                lt.add_last(list_values, root["key"])
+                lt.add_last(list_value, root["value"])
             if key_initial < root["key"]:
-                keys_range(root["left"], key_initial, key_final, list_values)
+                values_range(root["left"], key_initial, key_final, list_value)
             if root["key"] < key_final:
-                keys_range(root["right"], key_initial, key_final, list_values)
-            return list_values
+                values_range(root["right"], key_initial, key_final, list_value)
+            return list_value
 
 def height(bst):
-    return height_tree(bst["root"], 0)
+    return height_tree(bst["root"], -1)
 
 def height_tree(root, contador):
     if root is None:
